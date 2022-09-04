@@ -1,0 +1,52 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	margin-top: 30px;
+    }
+    form {
+      display: flex;
+      flex-direction: row;
+      width: 90vw;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	/* border: 5px solid black; */
+	flex-wrap: wrap;
+    }
+    form input {
+      margin: 5px;
+      height: 35px;
+      text-indent: 5px;
+    }
+    form button {
+      height: 35px;
+      border: none;
+      background: rgba(0, 0, 0, 0.2);
+	padding: 10px;
+    }
+    .expense {
+      background: gray;
+      margin-top: 25px;
+      padding: 10px;
+      width: 200px;
+      color: white;
+	border: 5px solid rgb(255, 255, 255);
+	border-radius: 10px;
+    }
+    #root{
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 20px;
+	width: 90vw;
+	overflow-wrap: normal;
+	flex-wrap: wrap;
+    }
