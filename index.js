@@ -1,5 +1,8 @@
 let form = document.getElementById("form");
-let expenseList = [];
+let expenseList = JSON.parse(localStorage.getItem('expenseList')) || [];
+if (JSON.parse(window.localStorage.getItem('expenseList')) !== null) {
+	initialState = JSON.parse(window.localStorage.getItem('expenseList'))
+}
 
 function expense(desc, amt, date) {
   return (expenseObj = {
@@ -9,17 +12,27 @@ function expense(desc, amt, date) {
   });
 }
 
+
+
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let description = e.target.des.value;
   let amount = e.target.amt.value;
   let date = e.target.date.value;
-
   let newExpense = new expense(description, amount, date);
   expenseList.push(newExpense);
   console.log(expenseList);
+  addToLocalStorage(expenseList)
   addExpense();
 });
+
+form.addEventListener("reset",(e)=>{
+  console.log("clicked Clear");
+  expenseList=[]
+  addToLocalStorage(expenseList)
+  document.getElementById("root").innerHTML="";
+})
 
 function addExpense() {
   let div = document.createElement("div");
@@ -36,4 +49,19 @@ function addExpense() {
     div.className = "expense";
     document.getElementById("root").appendChild(div);
   }
+  addToLocalStorage(expenseList)
+}
+
+const addToLocalStorage = (expenseList) => {
+  localStorage.setItem('expenseList', JSON.stringify(expenseList));
+}
+
+const getFromLocalStorage = (expenseList) => {
+  expenseList.forEach((expense)=>{
+    addExpense();
+  })
+}
+
+if (localStorage.getItem('expenseList') !== null){
+  getFromLocalStorage(expenseList);
 }
